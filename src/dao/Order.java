@@ -7,14 +7,14 @@ public class Order {
     private int orderId;
     private String username;
     private Date orderDate;
-    private int totalAmount;
+    private double totalAmount;
     private String status;
     private List<OrderItem> orderItems; // 订单项列表
 
     // 构造函数
     public Order() {}
 
-    public Order(int orderId, String username, int totalAmount, String status, List<OrderItem> orderItems) {
+    public Order(int orderId, String username, double totalAmount, String status, List<OrderItem> orderItems) {
         this.orderId = orderId;
         this.username = username;
         this.totalAmount = totalAmount;
@@ -47,11 +47,11 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public int getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(int totalAmount) {
+    public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
 

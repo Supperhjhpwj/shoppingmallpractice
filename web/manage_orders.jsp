@@ -79,20 +79,29 @@
         a:hover {
             text-decoration: underline;
         }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f1f1f1;
+            border-top: 1px solid #ddd;
+            position: relative; /* 确保页脚位置正确 */
+            clear: both; /* 防止被浮动内容覆盖 */
+            bottom: 0; /* 固定在页面底部 */
+            width: 100%; /* 确保宽度 */
+        }
+
     </style>
 </head>
 <body>
 <h2>订单管理</h2>
-
 <p>注：只有已支付的订单才能点击发货，只有已签收的订单才能点击完成订单。</p>
-
 <!-- 订单列表 -->
 <table>
     <thead>
     <tr>
         <th>订单编号</th>
         <th>用户</th>
-        <th>商品</th>
         <th>总金额</th>
         <th>状态</th>
         <th>下单时间</th>
@@ -136,6 +145,9 @@
 </table>
 
 <a href="admin_dashboard.jsp">返回管理员面板</a>
+<footer>
+    &copy; 2024 购物中心 | All rights reserved |华南理工大学 黄劲恒
+</footer>
 </body>
 </html>
 

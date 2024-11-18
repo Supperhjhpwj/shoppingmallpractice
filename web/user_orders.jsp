@@ -1,11 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ASUS
-  Date: 2024/10/15
-  Time: 11:39
-  To change this template use File | Settings | File Templates.
---%>
-<<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="dao.Order" %>
 <%@ page import="java.util.List" %>
 
@@ -25,6 +18,16 @@
         h2 {
             text-align: center;
             color: #333;
+        }
+        .info-message {
+            text-align: center;
+            color: #6c757d; /* 灰色 */
+            margin-bottom: 20px; /* 间距 */
+            font-size: 16px; /* 字体大小 */
+            padding: 10px; /* 内边距 */
+            border: 1px solid #ccc; /* 边框 */
+            border-radius: 5px; /* 圆角 */
+            background-color: #f8f9fa; /* 背景颜色 */
         }
         table {
             width: 100%;
@@ -73,10 +76,21 @@
         a:hover {
             text-decoration: underline;
         }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f1f1f1;
+            border-top: 1px solid #ddd;
+        }
+
     </style>
 </head>
 <body>
 <h2>我的订单</h2>
+<div class="info-message">
+    只有支付卖家才能发货，只有已发货才能签收，商家点击完成订单记录会被清除。
+</div>
 
 <!-- 订单列表 -->
 <table>
@@ -128,6 +142,7 @@
 
 <a href="userDashboard.jsp">返回用户中心</a>
 </body>
+<footer>
+    &copy; 2024 购物中心 | All rights reserved |华南理工大学 黄劲恒
+</footer>
 </html>
-
-

@@ -78,6 +78,18 @@
         button:hover {
             background-color: #45a049;
         }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f1f1f1;
+            border-top: 1px solid #ddd;
+            position: relative; /* 确保页脚位置正确 */
+            clear: both; /* 防止被浮动内容覆盖 */
+            bottom: 0; /* 固定在页面底部 */
+            width: 100%; /* 确保宽度 */
+        }
+
     </style>
 </head>
 <body>
@@ -127,6 +139,9 @@
         <button type="submit">返回主界面</button>
     </form>
 </div>
+<footer>
+    &copy; 2024 购物中心 | All rights reserved |华南理工大学 黄劲恒
+</footer>
 </body>
 </html>
 

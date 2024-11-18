@@ -111,9 +111,10 @@ public class UserDao {
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("email"));
-                user.setPhoneNumber(rs.getString("phone_number"));
-                user.setRecipientName(rs.getString("recipient_name"));
-                user.setShippingAddress(rs.getString("shipping_address"));
+                user.setPhoneNumber(rs.getString("phonenumber"));
+                user.setRecipientName(rs.getString("recipientName"));
+                user.setShippingAddress(rs.getString("shippingAddress"));
+                user.setRole(rs.getString("role"));
                 users.add(user);
             }
         } catch (SQLException e) {
@@ -190,6 +191,21 @@ public class UserDao {
             e.printStackTrace();
         }
         return null;
+    }
+    public boolean deleteUser1(String username) {
+        // 连接到数据库
+        // 执行 SQL 语句删除用户
+        String sql = "DELETE FROM users WHERE username = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, username);
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0; // 如果删除了行，返回 true
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // 出现异常时返回 false
+        }
     }
 
     public myUser getUserByUsernameAndPassword(String username, String password) {

@@ -18,11 +18,6 @@ import java.io.IOException;
 public class ConfirmOrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int orderId = Integer.parseInt(request.getParameter("orderId"));
-
-
-
-
-
         // 假设 OrderDao 是一个用于操作订单的 DAO 类
         OrderDao orderDao = new OrderDao();
 

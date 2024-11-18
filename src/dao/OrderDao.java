@@ -38,7 +38,7 @@ public class OrderDao {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, order.getUsername());
-            ps.setInt(2, order.getTotalAmount());
+            ps.setDouble(2, order.getTotalAmount());
             ps.setString(3, order.getStatus());
 
             int affectedRows = ps.executeUpdate();
@@ -77,7 +77,7 @@ public class OrderDao {
                 Order order = new Order();
                 order.setOrderId(rs.getInt("order_id"));
                 order.setUsername(rs.getString("username"));
-                order.setTotalAmount(rs.getInt("total_amount"));
+                order.setTotalAmount(rs.getDouble("total_amount"));
                 order.setStatus(rs.getString("status"));
                 order.setOrderDate(rs.getTimestamp("order_date"));
                 // 你可能需要在这里加载订单商品信息
@@ -255,7 +255,7 @@ public class OrderDao {
         order.setOrderId(rs.getInt("order_id"));
         order.setUsername(rs.getString("username")); // 从ResultSet获取username
         order.setOrderDate(rs.getDate("order_date"));
-        order.setTotalAmount(rs.getInt("total_amount")); // 使用getInt方法处理totalAmount
+        order.setTotalAmount(rs.getDouble("total_amount")); // 使用getInt方法处理totalAmount
         order.setStatus(rs.getString("status"));
         return order;
     }

@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
 @WebFilter("/*") // 过滤所有请求
-public class EncodeFilter implements Filter {
+public class  EncodeFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -24,7 +24,7 @@ public class EncodeFilter implements Filter {
         request.setCharacterEncoding("UTF-8");
         // 设置响应编码
         response.setContentType("text/html; charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
+
 
         // 继续执行请求
         chain.doFilter(request, response);

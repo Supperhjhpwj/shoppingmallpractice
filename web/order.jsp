@@ -321,6 +321,14 @@
         a:hover {
             text-decoration: underline;
         }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f1f1f1;
+            border-top: 1px solid #ddd;
+        }
+
     </style>
 </head>
 <body>
@@ -393,7 +401,11 @@
 <div class="continue-shopping">
     <a href="shop">继续购买商品</a>
 </div>
+<footer>
+    &copy; 2024 购物中心 | All rights reserved |华南理工大学 黄劲恒
+</footer>
 </body>
+
 </html>
 
 

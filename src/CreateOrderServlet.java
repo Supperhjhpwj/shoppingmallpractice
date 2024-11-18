@@ -60,7 +60,7 @@ public class CreateOrderServlet extends HttpServlet {
             return new OrderItem(0, 0, product.getId(), product.getName(), item.getQuantity(), product.getPrice());
         }).toList());
 
-        int totalAmount = cartItems.stream().mapToInt(item -> (int) (item.getProduct().getPrice() * item.getQuantity())).sum();
+        double totalAmount = cartItems.stream().mapToDouble(item ->  (item.getProduct().getPrice() * item.getQuantity())).sum();
         order.setTotalAmount(totalAmount);
 
 

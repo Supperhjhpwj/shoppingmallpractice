@@ -35,7 +35,7 @@ public class PayOrderServlet extends HttpServlet {
                 String email = user.getEmail();
                 String subject = "订单支付成功";
                 String message = "您已成功购买订单，订单号: " + orderId;
-                sendEmail(email, subject, message); // 假设您有一个发送邮件的方法
+                sendEmail1(email, subject, message); // 假设您有一个发送邮件的方法
 
                 // 重新定向到订单详情页面
                 response.sendRedirect("order.jsp?orderId=" + orderId);
@@ -57,18 +57,17 @@ public class PayOrderServlet extends HttpServlet {
     // 邮件发送方法
     private void sendEmail1(String to, String subject, String messageText) {
         // SMTP 配置
-        String host = "smtp.163.com"; // SMTP 服务器地址
-        final String username = "18927586171@163.com"; // 发送者邮箱
-        final String password = "Hjh20191739"; // 发送者邮箱密码
+        String host = "smtp.qq.com"; // SMTP 服务器地址
+        final String username = "2379598385@qq.com"; // 发送者邮箱
+        final String password = "*****************"; // 发送者邮箱密码
 
         // 配置邮件会话属性
         Properties properties = new Properties();
+
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", host);
-        properties.put("mail.smtp.port", "587"); // SMTP 端口
-        properties.put("mail.debug", "true");
-        properties.put("mail.smtp.ssl.enable", "false"); // 如果使用 SSL，设置为 true
 
 
         // 创建邮件会话

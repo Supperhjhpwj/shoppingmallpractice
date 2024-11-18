@@ -90,6 +90,14 @@
         a:hover {
             text-decoration: underline;
         }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f1f1f1;
+            border-top: 1px solid #ddd;
+        }
+
     </style>
 </head>
 <body>
@@ -125,6 +133,7 @@
         for (CartItem cartItem : cartItems) {
             double itemTotal = cartItem.getProduct().getPrice() * cartItem.getQuantity(); // 假设 stock 代表数量
             total += itemTotal;
+           
     %>
     <tr>
         <td><%= cartItem.getProduct().getName() %></td>
@@ -132,11 +141,27 @@
         <td><%= cartItem.getQuantity() %></td>
         <td><%= itemTotal %></td>
         <td>
-            <form action="UpdateCartServlet" method="post">
-                <input type="hidden" name="productId" value="<%= cartItem.getProduct().getId() %>"> <!-- 隐藏商品ID -->
+            <form action="UpdateCartServlet" method="post" onsubmit="return checkQuantity(this);">
+                <input type="hidden" name="productId" value="<%= cartItem.getProduct().getId() %>" > <!-- 隐藏商品ID -->
                 <input type="number" name="newQuantity" value="<%= cartItem.getQuantity() %>" min="1">
+                <input type="hidden" name="stock" value="<%= cartItem.getProduct().getStock() %>"> <!-- 隐藏库存 -->
+                <input type="hidden" name="currentQuantity" value="<%= cartItem.getQuantity() %>"> <!-- 隐藏当前数量 -->
                 <button type="submit">更新数量</button> <!-- 提交按钮 -->
             </form>
+            <script>
+                function checkQuantity(form) {
+                    const newQuantity = parseInt(form.newQuantity.value);
+                    const stock = parseInt(form.stock.value);
+                    const currentQuantity = parseInt(form.currentQuantity.value);
+
+                    if (newQuantity <= stock + currentQuantity) {
+                        return true; // 允许提交
+                    } else {
+                        alert("所选数量超过库存，无法更新。");
+                        return false; // 阻止提交
+                    }
+                }
+            </script>
             <form method="post" action="RemoveItemServlet" style="display: inline;">
                 <!-- 隐藏字段传递商品ID -->
                 <input type="hidden" name="productId" value="<%= cartItem.getProduct().getId() %>">
@@ -170,7 +195,9 @@
 <div class="continue-shopping">
     <a href="shop">继续购买商品</a>  <!-- 跳转到 ShopServlet -->
 </div>
-
+<footer>
+    &copy; 2024 购物中心 | All rights reserved |华南理工大学 黄劲恒
+</footer>
 </body>
 </html>
 

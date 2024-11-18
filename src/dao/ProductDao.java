@@ -122,7 +122,8 @@ public class ProductDao {
                 product.setPrice(resultSet.getDouble("price"));
                 product.setDescription(resultSet.getString("description"));
                 product.setStock(resultSet.getInt("stock"));  // 获取库存值
-                product.setStock(resultSet.getInt("recent_sell"));  // 获取库存值
+
+                product.setRecent_sell(resultSet.getInt("recent_sell"));  // 获取库存值
                 return product;
             }
         } catch (SQLException e) {

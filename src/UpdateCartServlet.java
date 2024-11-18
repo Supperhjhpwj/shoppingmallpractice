@@ -22,11 +22,16 @@ public class UpdateCartServlet extends HttpServlet {
             CartDao cartDao = new CartDao();
             List<CartItem> cartItems = cartDao.getCartItems(user.getUsername());
             ProductDao productDao=new ProductDao();
-
+            int newQuantity = Integer.parseInt(request.getParameter("newQuantity"));
+            int id=Integer.parseInt(request.getParameter("productId"));
             for (CartItem item : cartItems) {
+                if(id!=item.getProduct().getId())
+                {
+                    continue;
+                }
 
-                int newQuantity = Integer.parseInt(request.getParameter("newQuantity")); // 获取用户输入的新数量
-                if(item.getProduct().getStock()-newQuantity+item.getQuantity()>0)
+                 // 获取用户输入的新数量
+                if(item.getProduct().getStock()-newQuantity+item.getQuantity()>=0)
                 {
                     productDao.updateProductstockbyid(item.getProduct().getStock()-newQuantity+item.getQuantity(),item.getProduct().getId());
                     cartDao.updateQuantity(user.getUsername(), item.getProduct().getId(), newQuantity); // 更新数据库中的商品数量

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ASUS
-  Date: 2024/10/15
-  Time: 11:00
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="dao.*" %>
@@ -13,9 +6,10 @@
 <head>
   <meta charset="UTF-8">
   <title>订单详情</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       background-color: #f4f4f4;
       margin: 0;
       padding: 20px;
@@ -25,10 +19,12 @@
     }
     h2 {
       text-align: center;
+      margin-bottom: 20px;
     }
     ul {
       list-style-type: none;
       padding: 0;
+      margin: 0;
     }
     li {
       background: #fff;
@@ -43,6 +39,8 @@
       margin: 20px 0;
       background: white;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
     }
     th, td {
       padding: 12px;
@@ -52,6 +50,10 @@
     th {
       background-color: #007BFF;
       color: white;
+      transition: background-color 0.3s;
+    }
+    th:hover {
+      background-color: #0056b3;
     }
     td {
       background-color: #f9f9f9;
@@ -64,10 +66,17 @@
       color: white;
       text-decoration: none;
       border-radius: 4px;
-      transition: background-color 0.3s;
+      text-align: center;
+      transition: background-color 0.3s, transform 0.3s;
     }
     a:hover {
       background-color: #218838;
+      transform: translateY(-2px);
+    }
+    @media (max-width: 600px) {
+      table {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -107,7 +116,7 @@
   <%
     OrderItemDao orderItemDao = new OrderItemDao();
     // 获取该订单的商品列表
-    List<OrderItem> items = orderItemDao.getOrderItemsByOrderId(orderId); // 假设订单中有多个商品
+    List<OrderItem> items = orderItemDao.getOrderItemsByOrderId(orderId);
     for (OrderItem item : items) {
   %>
   <tr>
@@ -122,13 +131,13 @@
   </tbody>
 </table>
 
-<h3>订单总额: <%= order.getTotalAmount() %></h3>
+<h3>订单总额: <%= order.getTotalAmount() %> 元</h3>
 <h3>订单状态: <%= order.getStatus() %></h3>
 <h3>下单时间: <%= order.getOrderDate() %></h3>
 
 <a href="manage_orders.jsp">返回订单管理</a>
-
+<%--<footer>--%>
+<%--  &copy; 2024 购物中心 | All rights reserved |华南理工大学 黄劲恒--%>
+<%--</footer>--%>
 </body>
 </html>
-
-
